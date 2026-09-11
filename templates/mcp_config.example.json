@@ -16,7 +16,7 @@
     "mcpServers": {
       "my-custom-mcp": {
         "command": "node",
-        "args": ["C:\\Users\\ASUS\\Desktop\\flutter_project\\base_mcp\\bin\\mcp-server.js"],
+        "args": ["C:/Users/ASUS/Desktop/flutter_project/base_mcp/bin/mcp-server.js"],
         "env": {
           "NODE_ENV": "production"
         }
