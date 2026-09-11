@@ -20,7 +20,10 @@
     "test:stdio": "tsx scripts/test-stdio.ts",
     "test:all": "vitest run && tsx scripts/test-stdio.ts",
     "new-tool": "tsx scripts/create-tool.ts",
-    "export-schemas": "tsx scripts/export-schemas.ts"
+    "export-schemas": "tsx scripts/export-schemas.ts",
+    "register": "tsx scripts/register-antigravity.ts",
+    "register:antigravity": "tsx scripts/register-antigravity.ts",
+    "setup": "npm install && npm run build && npm run register"
   },
   "keywords": [
     "mcp",
