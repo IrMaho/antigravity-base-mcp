@@ -1,0 +1,29 @@
+{
+  "name": "my_custom_tool",
+  "description": "Detailed description of what this tool accomplishes, its expected input, and its output format.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "description": "Search query or target input string",
+        "type": "string"
+      },
+      "limit": {
+        "description": "Maximum number of items to return",
+        "type": "number"
+      },
+      "options": {
+        "description": "Optional execution configuration",
+        "type": "object",
+        "properties": {
+          "detailed": {
+            "description": "Include verbose output",
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "additionalProperties": false
+  }
+}

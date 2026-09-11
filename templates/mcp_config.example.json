@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json.schemastore.org/mcp-config.json",
+  "comment": "Sample configurations for connecting this MCP Server to AI Agent Clients",
+  "antigravity_gemini_config": {
+    "mcpServers": {
+      "my-custom-mcp": {
+        "command": "node",
+        "args": ["C:/Users/ASUS/Desktop/flutter_project/base_mcp/bin/mcp-server.js"],
+        "env": {
+          "MCP_LOG_LEVEL": "info"
+        }
+      }
+    }
+  },
+  "claude_desktop_config": {
+    "mcpServers": {
+      "my-custom-mcp": {
+        "command": "node",
+        "args": ["C:\\Users\\ASUS\\Desktop\\flutter_project\\base_mcp\\bin\\mcp-server.js"],
+        "env": {
+          "NODE_ENV": "production"
+        }
+      }
+    }
+  },
+  "cursor_mcp_config": {
+    "mcpServers": {
+      "my-custom-mcp": {
+        "command": "node",
+        "args": ["C:/Users/ASUS/Desktop/flutter_project/base_mcp/bin/mcp-server.js"]
+      }
+    }
+  },
+  "direct_tsx_dev_mode": {
+    "mcpServers": {
+      "my-custom-mcp-dev": {
+        "command": "npx",
+        "args": ["-y", "tsx", "C:/Users/ASUS/Desktop/flutter_project/base_mcp/bin/mcp-server.ts"]
+      }
+    }
+  }
+}

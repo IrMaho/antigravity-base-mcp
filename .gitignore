@@ -1,0 +1,33 @@
+# Node dependencies
+node_modules/
+package-lock.json
+
+# Build output
+dist/
+
+# Logs
+*.log
+logs/
+mcp-debug.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS temp files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+.nyc_output/

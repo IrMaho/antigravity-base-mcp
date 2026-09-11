@@ -1,0 +1,22 @@
+{
+  "name": "echo",
+  "description": "Echoes back the input message with optional repetition and prefix formatting.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "message": {
+        "description": "The text message to echo back",
+        "type": "string"
+      },
+      "repeat": {
+        "description": "Number of times to repeat the message",
+        "type": "number"
+      },
+      "prefix": {
+        "description": "Optional prefix to prepend to each line",
+        "type": "string"
+      }
+    },
+    "additionalProperties": false
+  }
+}

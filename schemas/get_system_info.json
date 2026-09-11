@@ -1,0 +1,18 @@
+{
+  "name": "get_system_info",
+  "description": "Retrieves current system diagnostics including OS, Node version, memory, and CPU info.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "includeMemory": {
+        "description": "Whether to include memory statistics",
+        "type": "boolean"
+      },
+      "includeCpu": {
+        "description": "Whether to include CPU architecture details",
+        "type": "boolean"
+      }
+    },
+    "additionalProperties": false
+  }
+}
