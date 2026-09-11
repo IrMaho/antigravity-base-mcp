@@ -1,0 +1,9 @@
+# Smithery configuration for Antigravity Base MCP Server
+# https://smithery.ai/docs/config
+
+startCommand:
+  type: stdio
+  config:
+    command: node
+    args:
+      - ./bin/mcp-server.js
