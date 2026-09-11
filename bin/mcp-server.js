@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Zero-Config Autonomous MCP Server Launcher
  * 
@@ -10,7 +10,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -30,7 +30,8 @@ function ensureReady() {
       });
       process.stderr.write('[MCP Auto-Launcher] Dependencies installed successfully.\n');
     } catch (installErr) {
-      process.stderr.write([MCP Auto-Launcher] Failed to auto-install dependencies: \n);
+      const msg = installErr instanceof Error ? installErr.message : String(installErr);
+      process.stderr.write('[MCP Auto-Launcher] Failed to auto-install dependencies: ' + msg + '\n');
     }
   }
 
@@ -44,7 +45,8 @@ function ensureReady() {
       });
       process.stderr.write('[MCP Auto-Launcher] Build completed successfully.\n');
     } catch (buildErr) {
-      process.stderr.write([MCP Auto-Launcher] Auto-build failed: \n);
+      const msg = buildErr instanceof Error ? buildErr.message : String(buildErr);
+      process.stderr.write('[MCP Auto-Launcher] Auto-build failed: ' + msg + '\n');
     }
   }
 }
@@ -53,25 +55,27 @@ async function bootstrap() {
   ensureReady();
 
   if (fs.existsSync(distPath)) {
-    const { BaseMCPServer } = await import(distPath);
+    const distUrl = pathToFileURL(distPath).href;
+    const { BaseMCPServer } = await import(distUrl);
     const server = new BaseMCPServer();
     await server.start();
   } else {
     // Fallback direct execution via tsx if installed
     try {
-      const { BaseMCPServer } = await import('../src/server.js');
+      const srcUrl = pathToFileURL(path.resolve(rootDir, 'src/server.js')).href;
+      const { BaseMCPServer } = await import(srcUrl);
       const server = new BaseMCPServer();
       await server.start();
     } catch (e) {
-      process.stderr.write(
-        [FATAL] Unable to start MCP server: \n
-      );
+      const msg = e instanceof Error ? e.message : String(e);
+      process.stderr.write('[FATAL] Unable to start MCP server: ' + msg + '\n');
       process.exit(1);
     }
   }
 }
 
 bootstrap().catch((err) => {
-  process.stderr.write([FATAL] MCP Server bootstrap error: \n);
+  const msg = err instanceof Error ? err.message : String(err);
+  process.stderr.write('[FATAL] MCP Server bootstrap error: ' + msg + '\n');
   process.exit(1);
 });
